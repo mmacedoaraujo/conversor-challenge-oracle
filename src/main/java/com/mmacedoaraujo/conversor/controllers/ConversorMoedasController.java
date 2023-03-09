@@ -37,6 +37,8 @@ public class ConversorMoedasController implements Initializable {
     @FXML
     private Label conversionLbl;
     @FXML
+    private Label currencyCodeLbl;
+    @FXML
     private ImageView closeImg;
 
 
@@ -44,7 +46,7 @@ public class ConversorMoedasController implements Initializable {
     public void onConverterBtnClick() throws IOException {
         String convertedCurrency = convert(valorConversao.getText(), requestCreator().getBid()).toString();
         converterBtn.setVisible(false);
-        conversionLbl.setText(convertedCurrency);
+        conversionLbl.setText(convertedCurrency + " " + comboBoxMoedaDestino.getValue().substring(0, 3));
         conversionLbl.setVisible(true);
         closeImg.setVisible(true);
     }
@@ -58,7 +60,6 @@ public class ConversorMoedasController implements Initializable {
         event.consume();
     }
 
-
     @SneakyThrows
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -71,8 +72,9 @@ public class ConversorMoedasController implements Initializable {
     @FXML
     private void getCurrencyNames() throws IOException {
         String name = requestCreator().getName();
-        currencyNameLbl.setText("Valor a ser convertido" +
-                " em " + name.replaceAll(".*(?=/).", "").toLowerCase() + ":");
+        String code = requestCreator().getCode();
+        currencyNameLbl.setText("Digite o valor a ser convertido");
+        currencyCodeLbl.setText(code);
     }
 
     private void initializeComboBoxes() {
@@ -83,8 +85,8 @@ public class ConversorMoedasController implements Initializable {
                 CURRENCIES_ABBREVIATIONS
         );
 
-        comboBoxMoedaDestino.getSelectionModel().select(1);
         comboBoxMoeda.getSelectionModel().select(0);
+        comboBoxMoedaDestino.getSelectionModel().select(1);
     }
 
     private ApiResponseValuesEntity requestCreator() throws IOException {

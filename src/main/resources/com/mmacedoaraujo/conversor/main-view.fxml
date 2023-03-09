@@ -62,7 +62,7 @@
             </DropShadow>
          </effect>
       </VBox>
-      <Label prefHeight="69.0" prefWidth="261.0" text="Conversores" textFill="WHITE">
+      <Label prefHeight="69.0" prefWidth="261.0" styleClass="vboxMainLbl" text="Conversores" textFill="WHITE">
          <font>
             <Font size="28.0" />
          </font>

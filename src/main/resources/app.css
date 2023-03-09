@@ -1,12 +1,21 @@
 .pane {
     -fx-background-color: #0d1b2a;
 }
+.root {
+    -fx-font-family: 'Roboto Medium';
+}
+
+vboxMainLbl {
+    -fx-font-family: 'Roboto Medium';
+    -fx-font-size: 25;
+}
 
 .vboxMenu {
     -fx-background-color: #1b263b;
 }
 
 .mainLabel {
+    -fx-font-family: 'Roboto Medium';
     -fx-font-size: 25;
 }
 
@@ -79,6 +88,12 @@
 }
 
 .conversionLbl {
+    -fx-font-family: 'Roboto Medium';
+    -fx-font-size: 15;
     -fx-background-color: #1b263b;
     -fx-background-radius: 9;
+}
+
+.currencyCode {
+    -fx-font-size: 15;
 }
