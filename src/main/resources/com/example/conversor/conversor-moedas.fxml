@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="currencyConverterPane" prefHeight="512.0" prefWidth="712.0" styleClass="pane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.conversor.ConversorMedidasController">
+<AnchorPane fx:id="currencyConverterPane" prefHeight="512.0" prefWidth="712.0" styleClass="pane" stylesheets="@../../../app.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.conversor.ConversorMoedasController">
    <children>
-      <Label layoutX="202.0" layoutY="163.0" text="Conversor de Moedas" />
+      <ComboBox fx:id="comboBoxMoeda" layoutX="14.0" layoutY="114.0" prefHeight="25.0" prefWidth="117.0" styleClass="comboBoxMoeda" />
+      <Label layoutX="14.0" layoutY="20.0" stylesheets="@../../../app.css" text="Conversor de Moedas" textFill="WHITE">
+         <font>
+            <Font name="Verdana" size="25.0" />
+         </font></Label>
    </children>
 </AnchorPane>

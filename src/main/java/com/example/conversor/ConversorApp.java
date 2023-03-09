@@ -13,6 +13,7 @@ public class ConversorApp extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ConversorApp.class.getResource("main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+        stage.setResizable(false);
         scene.getStylesheets().add("app.css");
         scene.getStylesheets().add("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
         stage.setTitle("Conversor");

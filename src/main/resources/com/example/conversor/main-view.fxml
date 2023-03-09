@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="447.0" prefWidth="490.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.conversor.MainViewController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="447.0" prefWidth="490.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.conversor.MainViewController">
    <children>
-      <VBox alignment="TOP_CENTER" prefHeight="512.0" prefWidth="261.0" spacing="10.0" styleClass="vboxMenu" stylesheets="@../../../app.css" AnchorPane.topAnchor="0.0">
+      <VBox alignment="TOP_CENTER" fillWidth="false" maxHeight="1.7976931348623157E308" maxWidth="261.0" prefHeight="512.0" prefWidth="261.0" spacing="10.0" styleClass="vboxMenu" stylesheets="@../../../app.css" AnchorPane.topAnchor="0.0">
          <children>
              <Button alignment="CENTER" onAction="#onConversorDeMoedasClick" prefHeight="37.0" prefWidth="263.0" style="border: 90px;" stylesheets="@../../../app.css" text="Conversor de Moedas" textFill="#ccd2da">
                <VBox.margin>

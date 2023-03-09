@@ -1,23 +1,44 @@
-.root {
-    -fx-font-family: 'Roboto';
-    -fx-font-size: 20;
-}
-
 .pane {
-    -fx-background-color: #1b263b;
+    -fx-background-color: #0d1b2a;
 }
 
 .vboxMenu {
-    -fx-background-color: #0d1b2a;
+    -fx-background-color: #1b263b;
 }
 
 .button {
     -fx-padding: 10 0 10 0;
     -fx-background-color: #1b263b;
     -fx-border-radius: 30px;
-    -fx
 }
 
 .button:hover {
+    -fx-background-color: #778da9;
+}
+
+.comboBoxMoeda .text, .comboBoxMoeda {
+    -fx-background-color: #1b263b;
+    -fx-fill: #ffffff;
+}
+
+.comboBoxMoeda:hover {
+    -fx-background-color: #778da9;
+}
+
+.comboBoxMoeda .arrow, .comboBoxMoeda .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.comboBoxMoeda .list-view .list-cell {
+    -fx-background-color: #1b263b;
+    -fx-color: #ffffff;
+}
+
+.comboBoxMoeda .list-view {
+    -fx-background-insets: 0;
+     -fx-padding: 0;
+}
+
+.comboBoxMoeda .list-view .list-cell:hover {
     -fx-background-color: #778da9;
 }
