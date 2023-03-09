@@ -3,16 +3,19 @@ package com.example.conversor;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class ConversorApp extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(ConversorApp.class.getResource("main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Hello!");
+        scene.getStylesheets().add("app.css");
+        scene.getStylesheets().add("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
+        stage.setTitle("Conversor");
         stage.setScene(scene);
         stage.show();
     }

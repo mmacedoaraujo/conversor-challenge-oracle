@@ -1,0 +1,23 @@
+.root {
+    -fx-font-family: 'Roboto';
+    -fx-font-size: 20;
+}
+
+.pane {
+    -fx-background-color: #1b263b;
+}
+
+.vboxMenu {
+    -fx-background-color: #0d1b2a;
+}
+
+.button {
+    -fx-padding: 10 0 10 0;
+    -fx-background-color: #1b263b;
+    -fx-border-radius: 30px;
+    -fx
+}
+
+.button:hover {
+    -fx-background-color: #778da9;
+}
