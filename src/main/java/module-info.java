@@ -3,6 +3,6 @@ module com.example.conversor {
     requires javafx.fxml;
 
 
-    opens com.example.conversor to javafx.fxml;
-    exports com.example.conversor;
+    opens com.mmacedoaraujo.conversor to javafx.fxml;
+    exports com.mmacedoaraujo.conversor;
 }

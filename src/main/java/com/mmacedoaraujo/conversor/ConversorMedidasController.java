@@ -1,4 +1,4 @@
-package com.example.conversor;
+package com.mmacedoaraujo.conversor;
 
 public class ConversorMedidasController {
 
