@@ -4,6 +4,7 @@ module com.example.conversor {
     requires lombok;
     requires com.google.gson;
     requires com.fasterxml.jackson.databind;
+    requires commons.math3;
 
 
     opens com.mmacedoaraujo.conversor to javafx.fxml;

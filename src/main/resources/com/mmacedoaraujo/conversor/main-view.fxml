@@ -3,31 +3,72 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="447.0" prefWidth="490.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mmacedoaraujo.conversor.MainViewController">
    <children>
-      <VBox fillWidth="false" maxHeight="1.7976931348623157E308" maxWidth="322.0" prefHeight="512.0" prefWidth="261.0" spacing="10.0" styleClass="vboxMenu" stylesheets="@../../../app.css" AnchorPane.topAnchor="0.0">
-         <children>
-             <Button alignment="CENTER" onAction="#onConversorDeMoedasClick" prefHeight="37.0" prefWidth="263.0" style="border: 90px;" stylesheets="@../../../app.css" text="Conversor de Moedas" textFill="WHITE">
-               <VBox.margin>
-                  <Insets top="100.0" />
-               </VBox.margin></Button>
-            <Button alignment="CENTER" onAction="#onConversorDeMedidasClick" prefHeight="37.0" prefWidth="263.0" stylesheets="@../../../app.css" text="Conversor de Medidas" textFill="WHITE">
-               <padding>
-                  <Insets right="30.0" />
-               </padding></Button>
-            <Button alignment="CENTER" onAction="#onConversorDeTemperaturaClick" prefHeight="37.0" prefWidth="265.0" stylesheets="@../../../app.css" text="Conversor de Temperatura" textFill="WHITE">
-               <padding>
-                  <Insets right="30.0" />
-               </padding></Button>
-         </children>
-      </VBox>
       <AnchorPane fx:id="mainPane" layoutX="260.0" prefHeight="512.0" prefWidth="713.0">
          <children>
             <Label layoutX="340.0" layoutY="248.0" text="Home" />
          </children>
       </AnchorPane>
+      <VBox fillWidth="false" maxHeight="1.7976931348623157E308" maxWidth="322.0" prefHeight="512.0" prefWidth="261.0" spacing="10.0" styleClass="vboxMenu" stylesheets="@../../../app.css" AnchorPane.topAnchor="0.0">
+         <children>
+             <Button alignment="TOP_LEFT" onAction="#onConversorDeMoedasClick" prefHeight="37.0" prefWidth="263.0" style="border: 90px;" stylesheets="@../../../app.css" text="Moedas" textFill="WHITE">
+               <VBox.margin>
+                  <Insets top="100.0" />
+               </VBox.margin>
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0">
+                     <image>
+                        <Image url="@../../../assets/coins.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button alignment="TOP_LEFT" onAction="#onConversorDeMedidasClick" prefHeight="37.0" prefWidth="263.0" stylesheets="@../../../app.css" text="Medidas" textFill="WHITE">
+               <padding>
+                  <Insets right="30.0" />
+               </padding>
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0">
+                     <image>
+                        <Image url="@../../../assets/ruler-vertical.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button alignment="TOP_LEFT" onAction="#onConversorDeTemperaturaClick" prefHeight="37.0" prefWidth="265.0" stylesheets="@../../../app.css" text="Temperatura" textFill="WHITE">
+               <padding>
+                  <Insets right="30.0" />
+               </padding>
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0">
+                     <image>
+                        <Image url="@../../../assets/temperature-high.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+         </children>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" height="47.26" radius="23.8925" width="50.31">
+               <color>
+                  <Color opacity="0.6068702340126038" />
+               </color>
+            </DropShadow>
+         </effect>
+      </VBox>
+      <Label prefHeight="69.0" prefWidth="261.0" text="Conversores" textFill="WHITE">
+         <font>
+            <Font size="28.0" />
+         </font>
+         <padding>
+            <Insets left="20.0" top="20.0" />
+         </padding>
+      </Label>
    </children>
 </AnchorPane>

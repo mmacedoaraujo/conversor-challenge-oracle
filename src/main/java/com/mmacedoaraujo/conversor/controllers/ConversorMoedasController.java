@@ -10,25 +10,20 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import lombok.SneakyThrows;
+import org.apache.commons.math3.util.Precision;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static com.mmacedoaraujo.conversor.util.Constants.CURRENCIES_ABBREVIATIONS;
+import static com.mmacedoaraujo.conversor.util.Constants.URL_API;
+
 public class ConversorMoedasController implements Initializable {
-
-    private static final String[] CURRENCIES_ABBREVIATIONS = {"BRL",
-            "USD",
-            "EUR",
-            "CHI",
-            "AAA"};
-
-    private static final String URL_API = "https://economia.awesomeapi.com.br/json/last/";
-    private ApiResponseValuesEntity apiResponseValuesEntity;
-
-
     @FXML
     private ComboBox<String> comboBoxMoeda = new ComboBox();
     @FXML
@@ -39,11 +34,28 @@ public class ConversorMoedasController implements Initializable {
     private Button converterBtn;
     @FXML
     private Label currencyNameLbl;
+    @FXML
+    private Label conversionLbl;
+    @FXML
+    private ImageView closeImg;
 
 
     @FXML
     public void onConverterBtnClick() throws IOException {
-        requestCreator();
+        String convertedCurrency = convert(valorConversao.getText(), requestCreator().getBid()).toString();
+        converterBtn.setVisible(false);
+        conversionLbl.setText(convertedCurrency);
+        conversionLbl.setVisible(true);
+        closeImg.setVisible(true);
+    }
+
+    @FXML
+    public void clearConversion(MouseEvent event) {
+        closeImg.setVisible(false);
+        conversionLbl.setVisible(false);
+        converterBtn.setText("Converter");
+        converterBtn.setVisible(true);
+        event.consume();
     }
 
 
@@ -59,39 +71,43 @@ public class ConversorMoedasController implements Initializable {
     @FXML
     private void getCurrencyNames() throws IOException {
         String name = requestCreator().getName();
-        currencyNameLbl.setText("Digite a quantidade de" +
-                " " +
-                name.replaceAll("(?=/).*", "").toLowerCase() +
-                " \nque deseja converter para " +
-                name.replaceAll(".*(?=/).", "").toLowerCase() + ":");
+        currencyNameLbl.setText("Valor a ser convertido" +
+                " em " + name.replaceAll(".*(?=/).", "").toLowerCase() + ":");
     }
 
     private void initializeComboBoxes() {
         comboBoxMoeda.getItems().addAll(
                 CURRENCIES_ABBREVIATIONS
         );
-        comboBoxMoeda.getSelectionModel().select(0);
-
         comboBoxMoedaDestino.getItems().addAll(
                 CURRENCIES_ABBREVIATIONS
         );
+
         comboBoxMoedaDestino.getSelectionModel().select(1);
+        comboBoxMoeda.getSelectionModel().select(0);
     }
 
     private ApiResponseValuesEntity requestCreator() throws IOException {
+        String comboBoxMoedaCode = comboBoxMoeda.getValue().substring(0, 3);
+        String comboBoxMoedaDestinoCode = comboBoxMoedaDestino.getValue().substring(0, 3);
+
         ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        String json = mapper.readTree(requestUrlCreator()).get(comboBoxMoeda.getValue() + comboBoxMoedaDestino.getValue()).toString();
+        String json = mapper.readTree(requestUrlCreator()).get(comboBoxMoedaCode + comboBoxMoedaDestinoCode).toString();
         ApiResponseValuesEntity entity = mapper.readValue(json, ApiResponseValuesEntity.class);
         return entity;
     }
 
     private URL requestUrlCreator() throws MalformedURLException {
-        String valueComboBoxMoeda = comboBoxMoeda.getValue();
-        String valueComboBoxMoedaFinal = comboBoxMoedaDestino.getValue();
+        String comboBoxMoedaCode = comboBoxMoeda.getValue().substring(0, 3);
+        String comboBoxMoedaDestinoCode = comboBoxMoedaDestino.getValue().substring(0, 3);
 
-        String urlRequest = URL_API + valueComboBoxMoeda + "-" + valueComboBoxMoedaFinal;
-
+        String urlRequest = URL_API + comboBoxMoedaCode + "-" + comboBoxMoedaDestinoCode;
         return new URL(urlRequest);
+    }
+
+    private Double convert(String textFieldValue, Double bid) {
+        double valueToBeConverted = Double.parseDouble(textFieldValue);
+        return Precision.round(valueToBeConverted * bid, 2);
     }
 
 }

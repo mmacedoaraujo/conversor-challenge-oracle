@@ -22,21 +22,18 @@
 }
 
 .button:hover {
-    -fx-background-color: #778da9;
+    -fx-background-color: #24334F;
+}
+
+.button:focused {
+    -fx-background-color: #24334F;
 }
 
 .comboBoxMoeda .text, .comboBoxMoeda {
+    -fx-background-radius: 9;
     -fx-font-size: 16;
     -fx-background-color: #1b263b;
     -fx-fill: #ffffff;
-}
-
-.comboBoxMoeda:hover {
-    -fx-background-color: #778da9;
-}
-
-.comboBoxMoeda .arrow, .comboBoxMoeda .arrow-button {
-    -fx-background-color: transparent;
 }
 
 .comboBoxMoeda .list-view .list-cell {
@@ -50,11 +47,38 @@
 }
 
 .comboBoxMoeda .list-view .list-cell:hover {
-    -fx-background-color: #778da9;
+    -fx-background-color: #24334F;
+}
+
+.comboBoxMoeda:hover {
+    -fx-background-color: #24334F;
+}
+
+.comboBoxMoeda .arrow, .comboBoxMoeda .arrow-button {
+    -fx-background-color: transparent;
 }
 
 .conversionTextField {
+    -fx-background-radius: 9;
     -fx-font-size: 16;
     -fx-background-color: #1b263b;
     -fx-text-fill: #ffffff;
+}
+
+.conversionTextField:hover {
+    -fx-background-color: #24334F;
+}
+
+.conversionTextField:focused {
+    -fx-background-color: #24334F;
+}
+
+#converterBtn {
+    padding: 0 0 0 0;
+    -fx-background-radius: 9;
+}
+
+.conversionLbl {
+    -fx-background-color: #1b263b;
+    -fx-background-radius: 9;
 }
