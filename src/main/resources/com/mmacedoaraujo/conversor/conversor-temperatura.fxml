@@ -3,7 +3,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="secondaryPane" prefHeight="512.0" prefWidth="713.0" styleClass="pane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mmacedoaraujo.conversor.ConversorMedidasController">
+<AnchorPane fx:id="secondaryPane" prefHeight="512.0" prefWidth="713.0" styleClass="pane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mmacedoaraujo.conversor.controllers.ConversorMedidasController">
    <children>
       <Label layoutX="201.0" layoutY="163.0" text="Conversor de Temperatura" />
    </children>

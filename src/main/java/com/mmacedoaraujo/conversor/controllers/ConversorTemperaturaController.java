@@ -1,4 +1,4 @@
-package com.mmacedoaraujo.conversor;
+package com.mmacedoaraujo.conversor.controllers;
 
 public class ConversorTemperaturaController {
 
