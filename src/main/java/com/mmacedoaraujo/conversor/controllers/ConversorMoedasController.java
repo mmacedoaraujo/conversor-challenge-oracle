@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mmacedoaraujo.conversor.model.ApiResponseValuesEntity;
 import com.mmacedoaraujo.conversor.util.Constraints;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -18,7 +19,10 @@ import org.apache.commons.math3.util.Precision;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 import static com.mmacedoaraujo.conversor.util.Constants.CURRENCIES_ABBREVIATIONS;
 import static com.mmacedoaraujo.conversor.util.Constants.URL_API;
@@ -66,27 +70,23 @@ public class ConversorMoedasController implements Initializable {
         initializeComboBoxes();
         Constraints.setTextFieldDouble(this.valorConversao);
         requestCreator();
-        getCurrencyNames();
     }
 
     @FXML
     private void getCurrencyNames() throws IOException {
+        removeAlreadySelectedValue();
         String name = requestCreator().getName();
         String code = requestCreator().getCode();
-        currencyNameLbl.setText("Digite o valor a ser convertido");
         currencyCodeLbl.setText(code);
     }
 
     private void initializeComboBoxes() {
-        comboBoxMoeda.getItems().addAll(
-                CURRENCIES_ABBREVIATIONS
-        );
-        comboBoxMoedaDestino.getItems().addAll(
-                CURRENCIES_ABBREVIATIONS
-        );
-
+        List<String> comboBoxItems = new ArrayList<>(List.of(CURRENCIES_ABBREVIATIONS));
+        comboBoxMoeda.getItems().addAll(comboBoxItems);
         comboBoxMoeda.getSelectionModel().select(0);
-        comboBoxMoedaDestino.getSelectionModel().select(1);
+        List<String> filteredList = comboBoxItems.stream().filter(item -> !item.equals(comboBoxMoeda.getValue())).collect(Collectors.toList());
+        comboBoxMoedaDestino.getItems().addAll(filteredList);
+        comboBoxMoedaDestino.getSelectionModel().select(0);
     }
 
     private ApiResponseValuesEntity requestCreator() throws IOException {
@@ -105,6 +105,13 @@ public class ConversorMoedasController implements Initializable {
 
         String urlRequest = URL_API + comboBoxMoedaCode + "-" + comboBoxMoedaDestinoCode;
         return new URL(urlRequest);
+    }
+
+    private void removeAlreadySelectedValue() {
+        List<String> comboBoxItems = new ArrayList<>(List.of(CURRENCIES_ABBREVIATIONS));
+        List<String> filteredList = comboBoxItems.stream().filter(item -> !item.equals(comboBoxMoeda.getValue())).collect(Collectors.toList());
+        comboBoxMoedaDestino.getItems().clear();
+        comboBoxMoedaDestino.getItems().addAll(filteredList);
     }
 
     private Double convert(String textFieldValue, Double bid) {
