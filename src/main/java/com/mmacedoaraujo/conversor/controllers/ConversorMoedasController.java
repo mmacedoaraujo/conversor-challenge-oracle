@@ -112,6 +112,8 @@ public class ConversorMoedasController implements Initializable {
         List<String> filteredList = comboBoxItems.stream().filter(item -> !item.equals(comboBoxMoeda.getValue())).collect(Collectors.toList());
         comboBoxMoedaDestino.getItems().clear();
         comboBoxMoedaDestino.getItems().addAll(filteredList);
+        comboBoxMoedaDestino.getSelectionModel().selectNext();
+        comboBoxMoedaDestino.getSelectionModel().selectPrevious();
     }
 
     private Double convert(String textFieldValue, Double bid) {
