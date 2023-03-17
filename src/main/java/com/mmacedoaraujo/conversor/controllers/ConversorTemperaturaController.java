@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-import static com.mmacedoaraujo.conversor.util.Constants.*;
+import static com.mmacedoaraujo.conversor.util.Constants.TEMPERATURE;
 
 public class ConversorTemperaturaController implements Initializable {
 
@@ -35,13 +35,28 @@ public class ConversorTemperaturaController implements Initializable {
     @FXML
     private Label conversionLbl;
     @FXML
-    private Label currencyCodeLbl;
+    private Label temperatureAbbreviationLbl;
     @FXML
     private ImageView closeImg;
+
+    @SneakyThrows
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Constraints.setTextFieldInteger(valorConversao);
+        initializeComboBoxes();
+        updateInterfaceValues();
+        Constraints.setTextFieldDouble(this.valorConversao);
+    }
 
     @FXML
     public void onConverterBtnClick() throws IOException {
 
+    }
+
+    @FXML
+    public void updateInterfaceValues() {
+        removeAlreadySelectedValue();
+        temperatureAbbreviationLbl.setText(comboBoxTemperatura.getValue().substring(0, 2));
     }
 
     @FXML
@@ -53,12 +68,6 @@ public class ConversorTemperaturaController implements Initializable {
         event.consume();
     }
 
-    @SneakyThrows
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        initializeComboBoxes();
-        Constraints.setTextFieldDouble(this.valorConversao);
-    }
 
     private void initializeComboBoxes() {
         List<String> comboBoxItems = new ArrayList<>(List.of(TEMPERATURE));
@@ -68,6 +77,7 @@ public class ConversorTemperaturaController implements Initializable {
         comboBoxTemperaturaDestino.getItems().addAll(filteredList);
         comboBoxTemperaturaDestino.getSelectionModel().selectNext();
     }
+
     private void removeAlreadySelectedValue() {
         List<String> comboBoxItems = new ArrayList<>(List.of(TEMPERATURE));
         List<String> filteredList = comboBoxItems.stream().filter(item -> !item.equals(comboBoxTemperatura.getValue())).collect(Collectors.toList());
