@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
+import static com.mmacedoaraujo.conversor.service.ConversorMoedasService.convert;
 import static com.mmacedoaraujo.conversor.util.Constants.CURRENCIES_ABBREVIATIONS;
 import static com.mmacedoaraujo.conversor.util.Constants.URL_API;
 
@@ -114,11 +115,6 @@ public class ConversorMoedasController implements Initializable {
         comboBoxMoedaDestino.getItems().addAll(filteredList);
         comboBoxMoedaDestino.getSelectionModel().selectNext();
         comboBoxMoedaDestino.getSelectionModel().selectPrevious();
-    }
-
-    private Double convert(String textFieldValue, Double bid) {
-        double valueToBeConverted = Double.parseDouble(textFieldValue);
-        return Precision.round(valueToBeConverted * bid, 2);
     }
 
 }

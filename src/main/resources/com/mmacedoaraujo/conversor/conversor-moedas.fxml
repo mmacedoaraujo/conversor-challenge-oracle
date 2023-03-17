@@ -26,7 +26,7 @@
             <Font size="13.0" />
          </font>
       </Label>
-      <ImageView fitHeight="21.0" fitWidth="20.0" layoutX="81.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="21.0" fitWidth="20.0" layoutX="86.0" layoutY="281.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../assets/coin.png" />
          </image>
@@ -51,7 +51,7 @@
       </ImageView>
       <ImageView fitHeight="21.0" fitWidth="20.0" layoutX="86.0" layoutY="349.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../assets/balance.png" />
+            <Image url="@../../../assets/change.png" />
          </image>
       </ImageView>
    </children>
