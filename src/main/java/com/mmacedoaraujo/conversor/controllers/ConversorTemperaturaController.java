@@ -1,6 +1,79 @@
 package com.mmacedoaraujo.conversor.controllers;
 
-public class ConversorTemperaturaController {
+import com.mmacedoaraujo.conversor.util.Constraints;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import lombok.SneakyThrows;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
+import static com.mmacedoaraujo.conversor.util.Constants.*;
+
+public class ConversorTemperaturaController implements Initializable {
+
+    @FXML
+    private ComboBox<String> comboBoxTemperatura = new ComboBox();
+    @FXML
+    private ComboBox<String> comboBoxTemperaturaDestino = new ComboBox();
+    @FXML
+    private TextField valorConversao;
+    @FXML
+    private Button converterBtn;
+    @FXML
+    private Label currencyNameLbl;
+    @FXML
+    private Label conversionLbl;
+    @FXML
+    private Label currencyCodeLbl;
+    @FXML
+    private ImageView closeImg;
+
+    @FXML
+    public void onConverterBtnClick() throws IOException {
+
+    }
+
+    @FXML
+    public void clearConversion(MouseEvent event) {
+        closeImg.setVisible(false);
+        conversionLbl.setVisible(false);
+        converterBtn.setText("Converter");
+        converterBtn.setVisible(true);
+        event.consume();
+    }
+
+    @SneakyThrows
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        initializeComboBoxes();
+        Constraints.setTextFieldDouble(this.valorConversao);
+    }
+
+    private void initializeComboBoxes() {
+        List<String> comboBoxItems = new ArrayList<>(List.of(TEMPERATURE));
+        comboBoxTemperatura.getItems().addAll(comboBoxItems);
+        comboBoxTemperatura.getSelectionModel().selectFirst();
+        List<String> filteredList = comboBoxItems.stream().filter(item -> !item.equals(comboBoxTemperatura.getValue())).collect(Collectors.toList());
+        comboBoxTemperaturaDestino.getItems().addAll(filteredList);
+        comboBoxTemperaturaDestino.getSelectionModel().selectNext();
+    }
+    private void removeAlreadySelectedValue() {
+        List<String> comboBoxItems = new ArrayList<>(List.of(TEMPERATURE));
+        List<String> filteredList = comboBoxItems.stream().filter(item -> !item.equals(comboBoxTemperatura.getValue())).collect(Collectors.toList());
+        comboBoxTemperaturaDestino.getItems().clear();
+        comboBoxTemperaturaDestino.getItems().addAll(filteredList);
+        comboBoxTemperaturaDestino.getSelectionModel().selectNext();
+        comboBoxTemperaturaDestino.getSelectionModel().selectPrevious();
+    }
 }

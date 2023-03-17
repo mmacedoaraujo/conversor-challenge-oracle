@@ -1,12 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="secondaryPane" prefHeight="512.0" prefWidth="713.0" styleClass="pane"
-            xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.mmacedoaraujo.conversor.controllers.ConversorMedidasController">
+<AnchorPane fx:id="currencyConverterPane" prefHeight="450.0" prefWidth="400.0" styleClass="pane" stylesheets="@../../../app.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mmacedoaraujo.conversor.controllers.ConversorMoedasController">
     <children>
-        <Label layoutX="201.0" layoutY="163.0" text="Conversor de Medidas"/>
+        <Label layoutX="75.0" layoutY="66.0" styleClass="subLabels" text="Selecione a moeda a ser convertida:" textFill="WHITE" />
+        <ComboBox fx:id="comboBoxMoeda" layoutX="75.0" layoutY="97.0" onAction="#getCurrencyNames" prefHeight="35.0" prefWidth="250.0" styleClass="comboBoxMoeda" />
+        <Label layoutX="75.0" layoutY="151.0" styleClass="subLabels" text="Selecione a moeda de destino:" textFill="WHITE" />
+        <ComboBox fx:id="comboBoxMoedaDestino" layoutX="75.0" layoutY="182.0" prefHeight="25.0" prefWidth="250.0" styleClass="comboBoxMoeda" AnchorPane.topAnchor="182.0" />
+        <TextField fx:id="valorConversao" alignment="CENTER_RIGHT" layoutX="75.0" layoutY="272.0" prefHeight="36.0" prefWidth="250.0" promptText="0.0" styleClass="conversionTextField" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="272.0">
+            <padding>
+                <Insets left="30.0" right="50.0" />
+            </padding></TextField>
+        <Label fx:id="currencyCodeLbl" layoutX="282.0" layoutY="280.0" styleClass="currencyCode" text="BRL" textFill="WHITE">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="21.0" fitWidth="20.0" layoutX="81.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../assets/coin.png" />
+            </image>
+        </ImageView>
+        <Label fx:id="currencyNameLbl" layoutX="75.0" layoutY="240.0" styleClass="subLabels" text="Digite o valor a ser convertido:" textFill="WHITE" wrapText="true" />
+        <Button id="converterBtn" fx:id="converterBtn" layoutX="75.0" layoutY="336.0" mnemonicParsing="false" onAction="#onConverterBtnClick" prefHeight="45.0" prefWidth="250.0" text="Converter" textFill="WHITE" />
+        <Label id="converterBtn" fx:id="conversionLbl" alignment="CENTER" contentDisplay="CENTER" layoutX="75.0" layoutY="336.0" prefHeight="45.0" prefWidth="250.0" style="-fx-background-color: #1b263b;" styleClass="conversionLbl" textFill="WHITE" visible="false">
+            <font>
+                <Font size="14.0" />
+            </font>
+            <padding>
+                <Insets left="30.0" right="30.0" />
+            </padding>
+        </Label>
+        <ImageView fx:id="closeImg" fitHeight="12.0" fitWidth="12.0" layoutX="308.0" layoutY="342.0" onDragDetected="#clearConversion" onMouseClicked="#clearConversion" pickOnBounds="true" preserveRatio="true" visible="false">
+            <image>
+                <Image url="@../../../assets/cancel.png" />
+            </image>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </ImageView>
+        <ImageView fitHeight="21.0" fitWidth="20.0" layoutX="86.0" layoutY="349.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../assets/balance.png" />
+            </image>
+        </ImageView>
     </children>
 </AnchorPane>
