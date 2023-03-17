@@ -18,5 +18,16 @@ public class Constants {
             "K - Kelvin"
     };
 
+    public static final String[] METRIC = {
+            "KM - Quilômetro",
+            "HM - Hectômetro",
+            "DAM - Decâmetro",
+            "M - Metro",
+            "DM - Decímetro",
+            "CM - Centímetro",
+            "MM - Milímetro"
+
+    };
+
     public static final String URL_API = "https://economia.awesomeapi.com.br/json/last/";
 }
