@@ -13,6 +13,7 @@ import javafx.scene.input.MouseEvent;
 import lombok.SneakyThrows;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -52,9 +53,9 @@ public class ConversorMedidasController implements Initializable {
 
     @FXML
     public void onConverterBtnClick() throws IOException {
-        Double conversion = service.getPosition(METRIC, comboBoxTemperatura.getValue(), comboBoxTemperaturaDestino.getValue(), valorConversao.getText());
+        BigDecimal conversion = service.getPosition(METRIC, comboBoxTemperatura.getValue(), comboBoxTemperaturaDestino.getValue(), valorConversao.getText());
         converterBtn.setVisible(false);
-        conversionLbl.setText(conversion.toString() + " " + comboBoxTemperaturaDestino.getValue().substring(0, 3));
+        conversionLbl.setText(conversion.toPlainString() + " " + comboBoxTemperaturaDestino.getValue().substring(0, 3));
         conversionLbl.setVisible(true);
         closeImg.setVisible(true);
     }

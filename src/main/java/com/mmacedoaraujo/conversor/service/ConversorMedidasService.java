@@ -1,10 +1,11 @@
 package com.mmacedoaraujo.conversor.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class ConversorMedidasService {
 
-    public static Double getPosition(List<String> listOfValues, String firstValue, String secondValue, String valueToConvert) {
+    public static BigDecimal getPosition(List<String> listOfValues, String firstValue, String secondValue, String valueToConvert) {
         int firstElementIndex = listOfValues.indexOf(firstValue);
         int secondElementIndex = listOfValues.indexOf(secondValue);
         int differenceBetweenIndexes = 0;
@@ -22,6 +23,6 @@ public class ConversorMedidasService {
         }
 
 
-        return result;
+        return BigDecimal.valueOf(result);
     }
 }

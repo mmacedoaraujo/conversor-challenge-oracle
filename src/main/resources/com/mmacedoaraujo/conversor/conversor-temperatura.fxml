@@ -33,7 +33,7 @@
             <Font size="14.0" />
          </font>
          <padding>
-            <Insets left="30.0" right="30.0" />
+            <Insets left="35.0" right="35.0" />
          </padding>
       </Label>
       <ImageView fx:id="closeImg" fitHeight="12.0" fitWidth="12.0" layoutX="308.0" layoutY="342.0" onDragDetected="#clearConversion" onMouseClicked="#clearConversion" pickOnBounds="true" preserveRatio="true" visible="false">
