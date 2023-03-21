@@ -40,8 +40,6 @@ public class ConversorMedidasController implements Initializable {
     @FXML
     private ImageView closeImg;
 
-    private ConversorMedidasService service;
-
     @SneakyThrows
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -53,7 +51,7 @@ public class ConversorMedidasController implements Initializable {
 
     @FXML
     public void onConverterBtnClick() throws IOException {
-        BigDecimal conversion = service.getPosition(METRIC, comboBoxTemperatura.getValue(), comboBoxTemperaturaDestino.getValue(), valorConversao.getText());
+        BigDecimal conversion = ConversorMedidasService.convert(METRIC, comboBoxTemperatura.getValue(), comboBoxTemperaturaDestino.getValue(), valorConversao.getText());
         converterBtn.setVisible(false);
         conversionLbl.setText(conversion.toPlainString() + " " + comboBoxTemperaturaDestino.getValue().substring(0, 3));
         conversionLbl.setVisible(true);

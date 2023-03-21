@@ -3,6 +3,7 @@ package com.mmacedoaraujo.conversor.controllers;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mmacedoaraujo.conversor.model.ApiResponseValuesEntity;
+import com.mmacedoaraujo.conversor.service.ConversorMoedasService;
 import com.mmacedoaraujo.conversor.util.Constraints;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -49,7 +50,7 @@ public class ConversorMoedasController implements Initializable {
 
     @FXML
     public void onConverterBtnClick() throws IOException {
-        String convertedCurrency = convert(valorConversao.getText(), requestCreator().getBid()).toString();
+        String convertedCurrency = ConversorMoedasService.convert(valorConversao.getText(), requestCreator().getBid()).toString();
         converterBtn.setVisible(false);
         conversionLbl.setText(convertedCurrency + " " + comboBoxMoedaDestino.getValue().substring(0, 3));
         conversionLbl.setVisible(true);
