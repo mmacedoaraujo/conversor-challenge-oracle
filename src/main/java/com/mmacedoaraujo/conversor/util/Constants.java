@@ -1,5 +1,8 @@
 package com.mmacedoaraujo.conversor.util;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Constants {
 
     public static final String[] CURRENCIES_ABBREVIATIONS = {
@@ -8,8 +11,7 @@ public class Constants {
             "EUR - Euro",
             "GBP - Libra Esterlina",
             "ARS - Peso Argentino",
-            "CLP - Peso Chileno",
-            "BTC - Bitcoin"
+            "CLP - Peso Chileno"
     };
 
     public static final String[] TEMPERATURE = {
@@ -18,16 +20,14 @@ public class Constants {
             "K - Kelvin"
     };
 
-    public static final String[] METRIC = {
+    public static final List<String> METRIC = new ArrayList<>(List.of(
             "KM - Quilômetro",
             "HM - Hectômetro",
             "DAM - Decâmetro",
-            "M - Metro",
+            " M - Metro",
             "DM - Decímetro",
             "CM - Centímetro",
-            "MM - Milímetro"
-
-    };
+            "MM - Milímetro"));
 
     public static final String URL_API = "https://economia.awesomeapi.com.br/json/last/";
 }

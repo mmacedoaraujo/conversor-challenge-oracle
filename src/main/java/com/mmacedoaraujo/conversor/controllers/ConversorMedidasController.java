@@ -1,5 +1,6 @@
 package com.mmacedoaraujo.conversor.controllers;
 
+import com.mmacedoaraujo.conversor.service.ConversorMedidasService;
 import com.mmacedoaraujo.conversor.util.Constraints;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,13 +14,11 @@ import lombok.SneakyThrows;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 import static com.mmacedoaraujo.conversor.util.Constants.METRIC;
-import static com.mmacedoaraujo.conversor.util.Constants.TEMPERATURE;
 
 public class ConversorMedidasController implements Initializable {
 
@@ -40,10 +39,12 @@ public class ConversorMedidasController implements Initializable {
     @FXML
     private ImageView closeImg;
 
+    private ConversorMedidasService service;
+
     @SneakyThrows
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Constraints.setTextFieldInteger(valorConversao);
+        Constraints.setTextFieldDouble(valorConversao);
         initializeComboBoxes();
         updateInterfaceValues();
         Constraints.setTextFieldDouble(this.valorConversao);
@@ -51,13 +52,17 @@ public class ConversorMedidasController implements Initializable {
 
     @FXML
     public void onConverterBtnClick() throws IOException {
-
+        Double conversion = service.getPosition(METRIC, comboBoxTemperatura.getValue(), comboBoxTemperaturaDestino.getValue(), valorConversao.getText());
+        converterBtn.setVisible(false);
+        conversionLbl.setText(conversion.toString() + " " + comboBoxTemperaturaDestino.getValue().substring(0, 3));
+        conversionLbl.setVisible(true);
+        closeImg.setVisible(true);
     }
 
     @FXML
     public void updateInterfaceValues() {
         removeAlreadySelectedValue();
-        temperatureAbbreviationLbl.setText(comboBoxTemperatura.getValue().substring(0, 2));
+        temperatureAbbreviationLbl.setText(comboBoxTemperatura.getValue().substring(0, 3));
     }
 
     @FXML
@@ -71,7 +76,7 @@ public class ConversorMedidasController implements Initializable {
 
 
     private void initializeComboBoxes() {
-        List<String> comboBoxItems = new ArrayList<>(List.of(METRIC));
+        List<String> comboBoxItems = METRIC;
         comboBoxTemperatura.getItems().addAll(comboBoxItems);
         comboBoxTemperatura.getSelectionModel().selectFirst();
         List<String> filteredList = comboBoxItems.stream().filter(item -> !item.equals(comboBoxTemperatura.getValue())).collect(Collectors.toList());
@@ -80,7 +85,7 @@ public class ConversorMedidasController implements Initializable {
     }
 
     private void removeAlreadySelectedValue() {
-        List<String> comboBoxItems = new ArrayList<>(List.of(METRIC));
+        List<String> comboBoxItems = METRIC;
         List<String> filteredList = comboBoxItems.stream().filter(item -> !item.equals(comboBoxTemperatura.getValue())).collect(Collectors.toList());
         comboBoxTemperaturaDestino.getItems().clear();
         comboBoxTemperaturaDestino.getItems().addAll(filteredList);
