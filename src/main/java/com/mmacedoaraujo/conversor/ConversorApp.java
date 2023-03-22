@@ -20,7 +20,6 @@ public class ConversorApp extends Application {
         scene.getStylesheets().add("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
         stage.setTitle("Conversor");
         stage.setScene(scene);
-        stage.getIcons().add(new Image("C:\\Workspace\\conversor\\conversor\\src\\main\\resources\\assets\\balance.png"));
         stage.show();
     }
 
