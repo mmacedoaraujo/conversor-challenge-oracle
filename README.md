@@ -1,5 +1,3 @@
-![conversorOne](https://user-images.githubusercontent.com/103322548/227322104-bbe29302-ac5b-4aa6-b14d-ce890ff47009.gif)
-
 <h1>Challenge ONE Backend - Conversor</h1>
 
 <img src="https://user-images.githubusercontent.com/103322548/226927970-bb03eee8-854c-4ddc-941b-1518cc2cb7ea.png" width="500px">
