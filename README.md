@@ -37,4 +37,5 @@ Lembrando que deve ser possível também converter de forma inversa ou seja:
      <li>JavaFX</li>
      <li>Maven</li>
      <li>SceneBuilder</li>
+     <li>API: <a href="https://docs.awesomeapi.com.br/api-de-moedas">https://docs.awesomeapi.com.br/api-de-moedas</a></li>
 </ul>
