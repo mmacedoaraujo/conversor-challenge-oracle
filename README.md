@@ -29,3 +29,12 @@ Lembrando que deve ser possível também converter de forma inversa ou seja:
      <img src="https://user-images.githubusercontent.com/103322548/227318857-360a0fff-79c0-43c4-af53-865e2442b795.png" width="450px">
      <img src="https://user-images.githubusercontent.com/103322548/227318884-ab54f27a-50ef-43fb-b7d7-64b8b2dfab73.png" width="450px">
 </div>
+
+<h1>Tecnologias utilizadas</h1>
+
+<ul>
+     <li>Java 11</li>
+     <li>JavaFX</li>
+     <li>Maven</li>
+     <li>SceneBuilder</li>
+</ul>
