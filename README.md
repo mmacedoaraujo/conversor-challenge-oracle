@@ -2,6 +2,8 @@
 
 <img src="https://user-images.githubusercontent.com/103322548/226927970-bb03eee8-854c-4ddc-941b-1518cc2cb7ea.png" width="500px">
 
+<p>Link para download do jar: <a href="https://github.com/mmacedoaraujo/conversor-challenge-oracle/releases/tag/RELEASE-1.0.0">https://github.com/mmacedoaraujo/conversor-challenge-oracle/releases/tag/RELEASE-1.0.0</a></p>
+
 <p> Nesta oportunidade foi solicitado para nós Devs a criação de um conversor de moeda utilizando a linguagem Java. As características solicitadas por nosso cliente são as seguintes:
 
 O conversor de moeda deverá:
